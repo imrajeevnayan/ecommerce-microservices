@@ -1,70 +1,77 @@
-# 🛒 E-Commerce Microservices with Spring Boot & Spring Cloud
+# 🛒 E-Commerce Microservices with Spring Boot & Frontend (No Docker)
 
-A production-style microservices architecture built with **Spring Boot 3**, **Java 17**, and **Spring Cloud**.  
-Demonstrates service communication, discovery, API gateway, resilience, and observability.
+A full-stack microservices application built with **Spring Boot 3**, **Java 17**, **PostgreSQL**, and a **Node.js-powered frontend**.  
+No Docker required — runs locally with **Maven** and **Node.js**.
+
+Perfect for learning, portfolios, or production prototypes.
 
 ---
 
 ## 🧱 Overview
 
-This project simulates an e-commerce system split into independent microservices:
+This project simulates an e-commerce system with:
+- ✅ `user-service`: Manages user data
+- ✅ `order-service`: Manages orders
+- ✅ `discovery-server`: Eureka Server for service discovery
+- ✅ PostgreSQL: Persistent database (no H2)
+- ✅ Frontend: HTML + JavaScript served via `http-server`
+- ✅ CORS: Enabled for frontend-backend communication
+- ✅ Maven multi-module structure
 
-| Service | Port | Description |
-|--------|------|-------------|
-| `user-service` | 8081 | Manages user data |
-| `order-service` | 8082 | Handles orders and integrates with `user-service` |
-| `api-gateway` | 8080 | Routes requests to services |
-| `discovery-server` | 8761 | Eureka Server for service discovery |
-| `config-server` | 8888 | Centralized configuration (Git-backed) |
-
-> 🔐 Future: Add Auth, Inventory, Payment, Kafka, Zipkin, Docker & Kubernetes.
+All services register with **Eureka** and communicate via REST.
 
 ---
 
 ## 🚀 Features
 
 - ✅ REST APIs with Spring Web
-- ✅ Inter-service communication via **Feign Client**
-- ✅ **Eureka Service Discovery** (dynamic service lookup)
-- ✅ **API Gateway** with routing & centralized entry
-- ✅ **H2 In-Memory DB** for fast development
-- ✅ **OpenFeign** for declarative REST clients
-- ✅ **Spring Data JPA** for persistence
-- ✅ **Lombok** to reduce boilerplate
-- ✅ **Actuator** for health checks and metrics
-- ✅ Clean project structure with shared modules
-- ✅ Ready for Docker & Kubernetes
+- ✅ Service Discovery with **Eureka**
+- ✅ Persistent Data with **PostgreSQL**
+- ✅ Frontend integration (no Docker)
+- ✅ CORS enabled for `http://localhost:3000`
+- ✅ Inter-service communication (future-ready)
+- ✅ Maven multi-module structure
+- ✅ Runs without Docker
+- ✅ Full `README` in one file
 
 ---
+
 
 ## 📦 Project Structure
 ```declarative
 ecommerce-microservices/
 ├── user-service/ → User management (8081)
 ├── order-service/ → Order management (8082)
-├── api-gateway/ → Routes requests (8080)
 ├── discovery-server/ → Eureka Server (8761)
-├── config-server/ → Central config (8888)
-├── shared/ → Shared DTOs and utils
+├── frontend/ → Static HTML/JS (3000)
 ├── pom.xml → Parent Maven POM
-└── README.md
-
-
-
+└── README.md ← You're here!
 
 ```
+
 
 ---
 
 ## ⚙️ Prerequisites
 
-- Java 17
-- Maven 3.6+
-- Git
-- Browser (for H2 Console)
-- `curl` or Postman (for testing APIs)
+- ✅ **Java 17** (JDK 17)
+- ✅ **Maven 3.6+** (`mvn --version`)
+- ✅ **Node.js + npm** (for frontend: `npx http-server`)
+- ✅ **PostgreSQL** (installed manually or via installer)
+- ✅ **Browser** (Chrome, Firefox, Edge)
 
 ---
+
+## 🧪 Step-by-Step: Run the Project
+
+### 1. Install and Start PostgreSQL
+
+Download: [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
+
+Create databases:
+```sql
+CREATE DATABASE userdb;
+CREATE DATABASE orderdb;
 
 ## 🧪 Step-by-Step: Run the Project
 
@@ -74,18 +81,41 @@ git clone https://github.com/yourname/ecommerce-microservices.git
 cd ecommerce-microservices
 
 ```
-### 2. Start user-service
+Use:
+
+- Username: postgres
+- Password: admin123
+- Port: 5432
+
+### 2. Start discovery-server (Eureka)
+```declarative
+cd discovery-server
+mvn spring-boot:run
+```
+
+✅ Open: http://localhost:8761 → Eureka Dashboard
+### 3. Start user-service
 ```declarative
 cd user-service
 mvn spring-boot:run
 ```
-→ Runs on http://localhost:8081
-### 3. Start order-service
+- → Runs on http://localhost:8081
+- ✅ Registers with Eureka
+### 4. Start order-service
 ```declarative
 cd user-service
 mvn spring-boot:run
 ```
-→ Runs on http://localhost:8082
+- → Runs on http://localhost:8082
+- ✅ Registers with Eureka
+
+### 5. Start Frontend
+```declarative
+cd frontend
+npx http-server -p 3000
+```
+- → Runs on http://localhost:3000
+- 
 
 ### 🧪 Test APIs
 #### Create a User
@@ -100,15 +130,14 @@ curl -X POST http://localhost:8081/users \
   -d '{"item":"Laptop","quantity":1,"userId":1}' ```
   ```
 
-## 🖥️ H2 Console
-#### Access H2 database for debugging:
-```
-user-service: http://localhost:8081/h2-console
-order-service: http://localhost:8082/h2-console
-JDBC URL: jdbc:h2:mem:userdb
-Username: sa
-Password: (leave empty)
-```
+## 🖥️ 🖥️ Eureka Dashboard
+- After starting services,
+- open: 👉 http://localhost:8761
+
+You should see:
+
+
+
 🔍 Troubleshooting
 
 
