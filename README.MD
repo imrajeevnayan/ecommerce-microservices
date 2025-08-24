@@ -150,8 +150,8 @@ You should see:
 - ✅ Dockerize all services
 - ✅ Deploy on Kubernetes (Minikube / Kind)
 - 🙌 Author
-- 👤 Rajeev NAYAn
+- 👤 Rajeev NAYAN
 - 📧 imrajeevnayan.@gmail.com
-- 🔗 GitHub Profile
+- 🔗 [GitHub](https://github.com/imrajeevnayan)
 
 📄 License
