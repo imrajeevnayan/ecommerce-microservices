@@ -154,4 +154,28 @@ You should see:
 - 📧 imrajeevnayan.@gmail.com
 - 🔗 [GitHub](https://github.com/imrajeevnayan)
 
-📄 License
+
+## 📄 License
+
+This project is open source. Please check the repository for license information.
+
+## 👥 Authors
+
+- **imrajeevnayan** - *Project Creator* - [@imrajeevnayan](https://github.com/imrajeevnayan)
+
+## 🙏 Acknowledgments
+
+- Thanks to all contributors who have helped shape this project
+- Inspired by the open-source community
+- Built with ❤️ and modern development practices
+
+## 📊 Project Stats
+
+- ⭐ Stars: 0
+- 🍴 Forks: 0
+- 🐛 Issues: 0
+- 📝 Language: Java
+
+---
+
+⭐️ If you found this project helpful, please give it a star!
